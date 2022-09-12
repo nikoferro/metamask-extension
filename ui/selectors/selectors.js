@@ -70,6 +70,7 @@ import {
   getLedgerTransportStatus,
 } from '../ducks/app/app';
 import { isEqualCaseInsensitive } from '../../shared/modules/string-utils';
+import { formatMoonpaySymbol } from '../helpers/utils/moonpay';
 ///: BEGIN:ONLY_INCLUDE_IN(flask)
 import { SNAPS_VIEW_ROUTE } from '../helpers/constants/routes';
 ///: END:ONLY_INCLUDE_IN
@@ -719,6 +720,16 @@ export function getIsBuyableTransakToken(state, symbol) {
   const chainId = getCurrentChainId(state);
   return Boolean(
     BUYABLE_CHAINS_MAP?.[chainId]?.transakCurrencies?.includes(symbol),
+  );
+}
+
+export function getIsBuyableMoonpayToken(state, symbol) {
+  const chainId = getCurrentChainId(state);
+  const _symbol = formatMoonpaySymbol(symbol, chainId);
+  return Boolean(
+    BUYABLE_CHAINS_MAP?.[chainId]?.moonPay.showOnlyCurrencies?.includes(
+      _symbol,
+    ),
   );
 }
 

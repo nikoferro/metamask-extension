@@ -300,7 +300,7 @@ export const BUYABLE_CHAINS_MAP = {
     ],
     moonPay: {
       defaultCurrencyCode: 'eth',
-      showOnlyCurrencies: 'eth,usdt,usdc,dai',
+      showOnlyCurrencies: 'eth,usdt,usdc,dai,matic,orn,weth,imx',
     },
     wyre: {
       srn: 'ethereum',

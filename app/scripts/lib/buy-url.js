@@ -15,6 +15,7 @@ import {
   MOONPAY_API_KEY,
   COINBASEPAY_API_KEY,
 } from '../constants/on-ramp';
+import { formatMoonpaySymbol } from '../../../ui/helpers/utils/moonpay';
 
 const fetchWithTimeout = getFetchWithTimeout();
 
@@ -79,15 +80,17 @@ const createTransakUrl = (walletAddress, chainId, symbol) => {
  *
  * @param {string} walletAddress - Destination address
  * @param {string} chainId - Current chain ID
+ * @param {string|undefined} symbol - Token symbol to buy
  * @returns String
  */
-const createMoonPayUrl = async (walletAddress, chainId) => {
+const createMoonPayUrl = async (walletAddress, chainId, symbol) => {
   const { moonPay: { defaultCurrencyCode, showOnlyCurrencies } = {} } =
     BUYABLE_CHAINS_MAP[chainId];
   const moonPayQueryParams = new URLSearchParams({
     apiKey: MOONPAY_API_KEY,
     walletAddress,
-    defaultCurrencyCode,
+    defaultCurrencyCode:
+      formatMoonpaySymbol(symbol, chainId) || defaultCurrencyCode,
     showOnlyCurrencies,
   });
   const queryParams = new URLSearchParams({
@@ -163,7 +166,7 @@ export default async function getBuyUrl({ chainId, address, service, symbol }) {
     case 'transak':
       return createTransakUrl(address, chainId, symbol);
     case 'moonpay':
-      return createMoonPayUrl(address, chainId);
+      return createMoonPayUrl(address, chainId, symbol);
     case 'coinbase':
       return createCoinbasePayUrl(address, chainId, symbol);
     case 'metamask-faucet':
