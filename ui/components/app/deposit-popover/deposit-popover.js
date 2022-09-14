@@ -169,10 +169,6 @@ const DepositPopover = ({ onClose, token }) => {
             : !isBuyableMoonPayChain
         }
       />
-      {console.log({
-        isBuyableMoonPayChain,
-        isTokenBuyableMoonpay,
-      })}
       <OnRampItem
         logo={<LogoWyre />}
         title={t('buyWithWyre', [symbol])}
