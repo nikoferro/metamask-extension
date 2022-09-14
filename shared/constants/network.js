@@ -305,6 +305,31 @@ export const BUYABLE_CHAINS_MAP = {
     wyre: {
       srn: 'ethereum',
       currencyCode: ETH_SYMBOL,
+      currencies: [
+        ETH_SYMBOL,
+        'DAI',
+        'USDC',
+        'USDT',
+        'BUSD',
+        'GUSD',
+        'PAX',
+        'USDS',
+        'AAVE',
+        'COMP',
+        'LINK',
+        'WBTC',
+        'WETH',
+        'BAT',
+        'CRV',
+        'MKR',
+        'SNX',
+        'UMA',
+        'UNI',
+        'YFI',
+        'GYEN',
+        'ZUSD',
+        'RAI',
+      ],
     },
     coinbasePayCurrencies: [
       ETH_SYMBOL,
@@ -443,6 +468,7 @@ export const BUYABLE_CHAINS_MAP = {
     wyre: {
       srn: 'matic',
       currencyCode: MATIC_SYMBOL,
+      currencies: [MATIC_SYMBOL, 'mUSDC'],
     },
   },
   [AVALANCHE_CHAIN_ID]: {
@@ -456,6 +482,7 @@ export const BUYABLE_CHAINS_MAP = {
     wyre: {
       srn: 'avalanche',
       currencyCode: AVALANCHE_SYMBOL,
+      currencies: [AVALANCHE_SYMBOL, 'AVAXC', 'AVAXCUSDC'],
     },
     coinbasePayCurrencies: [AVALANCHE_SYMBOL],
   },
