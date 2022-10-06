@@ -1,13 +1,13 @@
 .popover--deposit {
-  width: 100% !important;
   min-width: 328px;
   max-width: 850px;
+  @include screen-md-min {
+    width: 100% !important;
+  }
 }
-
 
 .on-ramp-item {
   border-bottom: 1px solid var(--color-border-muted);
-
   &:last-child {
     border-bottom: none;
   }
